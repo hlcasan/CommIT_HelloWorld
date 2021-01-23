@@ -1,4 +1,4 @@
-<?php 
+<?php
 //First load the DB connection
 require_once("db_connect.php");
 
@@ -21,26 +21,24 @@ if ($dbi) {
         $stmt->bind_result($rName);
 
         //Collect results
-        while($stmt->fetch()) {
+        while ($stmt->fetch()) {
             $rArray[] = [
-                "name"=>$rName
+                "name" => $rName
             ];
         }
-        
+
         //Encode JSON
         echo json_encode($rArray);
-        
-        $stmt->close();        
-    }
-    else {
+
+        $stmt->close();
+    } else {
         echo "no execute statement";
     }
-}
-//Inform user if error
+} //Inform user if error
 else {
-        echo "Connection Error: " . mysqli_connect_error();
+    echo "Connection Error: " . mysqli_connect_error();
 }
 //Close connection
 mysqli_close($dbi);
-    
+
 ?>

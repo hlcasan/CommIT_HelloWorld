@@ -2,7 +2,7 @@
 	Calls insert_item.php to dump item in DB
 */
 
-var insert_item = function() {
+var insert_item = function () {
     //The form in the HTML
     const addForm = document.getElementById("addForm");
 
