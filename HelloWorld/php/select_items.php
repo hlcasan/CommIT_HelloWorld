@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 
 if ($dbi) {
     // SQL query
-    $q = "SELECT name FROM HelloWorld ORDER BY ID DESC";
+    $q = "SELECT ID, name FROM HelloWorld ORDER BY ID DESC";
 
     // Array to translate to json
     $rArray = array();
@@ -18,11 +18,12 @@ if ($dbi) {
         //Prepare output
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($rName);
+        $stmt->bind_result($rID, $rName);
 
         //Collect results
         while ($stmt->fetch()) {
             $rArray[] = [
+                "ID" => $rID,
                 "name" => $rName
             ];
         }
